@@ -78,7 +78,7 @@ namespace ObjectType
 
             if (!Application.isPlaying)
             {
-                instance = (UnityEditor.PrefabUtility.InstantiatePrefab(prefab) as GameObject)?.GetComponent<ObjectTypeController>();
+                instance = (UnityEditor.PrefabUtility.InstantiatePrefab(prefab.gameObject) as GameObject)?.GetComponent<ObjectTypeController>();
             }
             
 #endif
