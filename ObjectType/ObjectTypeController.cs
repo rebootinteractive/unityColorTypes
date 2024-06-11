@@ -8,6 +8,8 @@ namespace ObjectType
     {
         public bool pooling;
         public ObjectTypeEnum testType;
+        
+        [SerializeField]private bool setInactiveListeners;
 
         public string TypeName
         {
@@ -39,7 +41,7 @@ namespace ObjectType
             }
 
             this.Type = type;
-            var listeners = GetComponentsInChildren<IObjectTypeListener>();
+            var listeners = GetComponentsInChildren<IObjectTypeListener>(setInactiveListeners);
             foreach (var listener in listeners)
             {
                 listener.OnObjectTypeChanged(type);
