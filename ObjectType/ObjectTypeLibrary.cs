@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ObjectType
 {
-    public class ObjectTypeLibrary: ScriptableObject
+    public class ObjectTypeLibrary : ScriptableObject
     {
         public ObjectTypeController[] prefabs;
         public Type[] objectTypes;
@@ -12,20 +12,25 @@ namespace ObjectType
         public static ObjectTypeLibrary Find()
         {
             var library = Resources.Load<ObjectTypeLibrary>(nameof(ObjectTypeLibrary));
+
+#if UNITY_EDITOR
+
             if (library == null)
             {
                 //Create the library
                 library = CreateInstance<ObjectTypeLibrary>();
                 library.objectTypes = Array.Empty<Type>();
-                
+
                 //Save the library
                 var path = "Assets/Resources/" + nameof(ObjectTypeLibrary) + ".asset";
                 UnityEditor.AssetDatabase.CreateAsset(library, path);
-                
+
                 //Refresh the database
                 UnityEditor.AssetDatabase.Refresh();
             }
-            
+
+#endif
+
             return library;
         }
 
@@ -41,7 +46,7 @@ namespace ObjectType
 
             return new Type();
         }
-        
+
         public string[] GetObjectTypeNames()
         {
             var names = new string[objectTypes.Length];
