@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ObjectType
 {
-    [CustomEditor(typeof(ObjectTypeController))]
+    [CustomEditor(typeof(ObjectTypeController)), CanEditMultipleObjects]
     public class ObjectTypeControllerEditor: Editor
     {
         public override void OnInspectorGUI()
@@ -12,7 +12,7 @@ namespace ObjectType
             var objectType = (ObjectTypeController) target;
             if (GUILayout.Button("Set Type"))
             {
-                objectType.SetObjectType(ObjectTypeLibrary.Find().FindObjectType(objectType.testType.typeName));
+                objectType.SetObjectType(ObjectTypeLibrary.Find().FindObjectType(objectType.type.typeName));
                 EditorUtility.SetDirty(target);
                 
                 var listeners=objectType.GetComponentsInChildren<IObjectTypeListener>();
