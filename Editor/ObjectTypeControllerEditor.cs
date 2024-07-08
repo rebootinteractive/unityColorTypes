@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ObjectType
 {
-    [CustomEditor(typeof(ObjectTypeController)), CanEditMultipleObjects]
+    [CustomEditor(typeof(ObjectTypeController),true), CanEditMultipleObjects]
     public class ObjectTypeControllerEditor: Editor
     {
         public override void OnInspectorGUI()
