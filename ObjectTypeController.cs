@@ -1,7 +1,5 @@
 using System;
 using Lean.Pool;
-using Sirenix.OdinInspector;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace ObjectType
