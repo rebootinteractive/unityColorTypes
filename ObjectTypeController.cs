@@ -41,7 +41,7 @@ namespace ObjectType
                 return;
             }
 
-            this.Type = type;
+            Type = type;
             var listeners = GetComponentsInChildren<IObjectTypeListener>(setInactiveListeners);
             foreach (var listener in listeners)
             {
@@ -49,7 +49,7 @@ namespace ObjectType
             }
         }
 
-        private void Start()
+        protected void Start()
         {
             if (useDefaultType)
             {
