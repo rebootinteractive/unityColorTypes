@@ -30,7 +30,9 @@ namespace ObjectType
             // Draw the dropdown
             currentIndex = EditorGUI.Popup(position, label.text, currentIndex, typeNames);
             typeNameProp.stringValue = typeNames[currentIndex];
-
+            EditorUtility.SetDirty(property.serializedObject.targetObject);
+            
+            
             EditorGUI.EndProperty();
         }
     }

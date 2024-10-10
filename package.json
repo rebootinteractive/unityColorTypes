@@ -1,0 +1,40 @@
+{
+  "name": "com.reboot.objecttype",
+  "version": "0.1.1",
+  "displayName": "ObjectType",
+  "description": "Helper package used for defining object types in a game with visual helper setter system.",
+  "unity": "2021.3",
+  "unityRelease": "1f1",
+  "documentationUrl": "",
+  "changelogUrl": "",
+  "licensesUrl": "",
+  "dependencies": {
+    "com.unity.ugui": "1.0.0",
+    "com.unity.modules.imgui": "1.0.0",
+    "com.unity.modules.particlesystem": "1.0.0",
+    "com.unity.modules.physics": "1.0.0",
+    "com.unity.modules.physics2d": "1.0.0",
+    "com.unity.modules.terrain": "1.0.0",
+    "com.unity.modules.terrainphysics": "1.0.0",
+    "com.unity.modules.tilemap": "1.0.0",
+    "com.unity.modules.ui": "1.0.0",
+    "com.unity.modules.uielements": "1.0.0",
+    "com.unity.render-pipelines.core" : "12.1.8",
+    "com.unity.render-pipelines.universal": "14.0.9"
+  },
+  "keywords": [
+    "reboot"
+  ],
+  "samples": [
+    {
+      "displayName": "Basic Type Library",
+      "description": "Contains basic type definitions for color with materials and colors.",
+      "path": "Samples/ColorType"
+    }
+  ],
+  "author": {
+    "name": "Reboot Interactive",
+    "email": "admin@reboot.ist",
+    "url": "https://www.reboot.gs"
+  }
+}
