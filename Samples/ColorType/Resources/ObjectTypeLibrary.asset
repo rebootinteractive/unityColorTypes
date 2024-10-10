@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da81e1b7223542619e87454b09daa5f, type: 3}
+  m_Name: ObjectTypeLibrary
+  m_EditorClassIdentifier: 
+  prefabs: []
+  objectTypes:
+  - typeName: Black
+    materials:
+    - {fileID: 2100000, guid: 8105a53a17b774d9abcc40b868d32d3c, type: 2}
+    colors:
+    - {r: 0, g: 0, b: 0, a: 1}
+    textures: []
+    sprites: []
+  - typeName: Blue
+    materials:
+    - {fileID: 2100000, guid: e9ed719eb1b2145f3b12977e038a51d9, type: 2}
+    colors:
+    - {r: 0, g: 0, b: 1, a: 1}
+    textures: []
+    sprites: []
+  - typeName: Cyan
+    materials:
+    - {fileID: 2100000, guid: 8c2375f84ea614cce801dcc85be8f14f, type: 2}
+    colors:
+    - {r: 0, g: 0.97032166, b: 1, a: 1}
+    textures: []
+    sprites: []
+  - typeName: Gray
+    materials:
+    - {fileID: 2100000, guid: a7594d76d56b645598082208cfb0ed8b, type: 2}
+    colors:
+    - {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
+    textures: []
+    sprites: []
+  - typeName: Green
+    materials:
+    - {fileID: 2100000, guid: 643deb0cea3044dd88f1001c5827b109, type: 2}
+    colors:
+    - {r: 0, g: 1, b: 0.03731489, a: 1}
+    textures: []
+    sprites: []
+  - typeName: Magenta
+    materials:
+    - {fileID: 2100000, guid: 395a88469a8524751b30ba03312b2ff6, type: 2}
+    colors:
+    - {r: 1, g: 0, b: 0.95273113, a: 1}
+    textures: []
+    sprites: []
+  - typeName: Red
+    materials:
+    - {fileID: 2100000, guid: 03005e7637f1b489a97edd32e291c640, type: 2}
+    colors:
+    - {r: 1, g: 0, b: 0, a: 1}
+    textures: []
+    sprites: []
+  - typeName: White
+    materials:
+    - {fileID: 2100000, guid: 73459939b3a7d4e78aafbfe66d4e7f0e, type: 2}
+    colors:
+    - {r: 1, g: 1, b: 1, a: 1}
+    textures: []
+    sprites: []
+  - typeName: Yellow
+    materials:
+    - {fileID: 2100000, guid: 629c79192e89c43aebd07cec3da47074, type: 2}
+    colors:
+    - {r: 1, g: 1, b: 0, a: 1}
+    textures: []
+    sprites: []

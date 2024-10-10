@@ -3,15 +3,16 @@ using UnityEngine;
 
 namespace ObjectType
 {
+    [CreateAssetMenu(fileName = nameof(ObjectTypeLibrary), menuName = "ObjectType/" + nameof(ObjectTypeLibrary))]
     public class ObjectTypeLibrary : ScriptableObject
     {
         public ObjectTypeController[] prefabs;
         public Type[] objectTypes;
         public string DefaultType => objectTypes != null && objectTypes.Length > 0 ? objectTypes[0].typeName : "NoType";
 
-        public static ObjectTypeLibrary Find()
+        public static ObjectTypeLibrary Find(string name = nameof(ObjectTypeLibrary))
         {
-            var library = Resources.Load<ObjectTypeLibrary>(nameof(ObjectTypeLibrary));
+            var library = Resources.Load<ObjectTypeLibrary>(name);
 
 #if UNITY_EDITOR
 
