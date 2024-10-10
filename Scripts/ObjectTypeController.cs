@@ -1,3 +1,4 @@
+using System;
 using Lean.Pool;
 using UnityEngine;
 
@@ -6,9 +7,10 @@ namespace ObjectType
     public class ObjectTypeController : MonoBehaviour
     {
         public bool pooling;
-        public ObjectTypeEnum testType;
+        public ObjectTypeEnum type;
         
         [SerializeField]private bool setInactiveListeners;
+        [SerializeField]private bool useDefaultType;
 
         public string TypeName
         {
@@ -39,14 +41,22 @@ namespace ObjectType
                 return;
             }
 
-            this.Type = type;
+            Type = type;
             var listeners = GetComponentsInChildren<IObjectTypeListener>(setInactiveListeners);
             foreach (var listener in listeners)
             {
                 listener.OnObjectTypeChanged(type);
             }
         }
-        
+
+        protected void Start()
+        {
+            if (useDefaultType)
+            {
+                SetObjectType(ObjectTypeLibrary.Find().FindObjectType(type.typeName));
+            }
+        }
+
         public virtual void Destroy()
         {
             if (Pooled)
