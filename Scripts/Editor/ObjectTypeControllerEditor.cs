@@ -27,6 +27,8 @@ namespace ObjectType
 
             if (GUILayout.Button("Randomize Type"))
             {
+                Type randomType=ObjectTypeLibrary.Find().GetRandomType();
+                objectType.type = ObjectTypeEnum.GetEnum(randomType.typeName);
                 objectType.SetObjectType(ObjectTypeLibrary.Find().GetRandomType());
                 EditorUtility.SetDirty(target);
                 
