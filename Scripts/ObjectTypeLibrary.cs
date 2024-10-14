@@ -58,5 +58,10 @@ namespace ObjectType
 
             return names;
         }
+
+        public Type GetRandomType()
+        {
+            return objectTypes[UnityEngine.Random.Range(0, objectTypes.Length)];
+        }
     }
 }
