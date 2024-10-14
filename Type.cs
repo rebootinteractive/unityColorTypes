@@ -10,6 +10,7 @@ namespace ObjectType
         public Color[] colors;
         public Texture[] textures;
         public Sprite[] sprites;
+        public GameObject[] prefabs;
 
         public bool IsNull()
         {

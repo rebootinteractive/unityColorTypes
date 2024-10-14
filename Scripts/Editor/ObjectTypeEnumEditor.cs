@@ -10,6 +10,12 @@ namespace ObjectType
         // Draw the dropdown
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            //If multiple objects are selected and they have different types, just draw the default property field
+            if (property.serializedObject.isEditingMultipleObjects)
+            {
+                EditorGUI.PropertyField(position, property, label);
+                return;
+            }
             
             var typeNames = ObjectTypeLibrary.Find().GetObjectTypeNames();
             if (typeNames.Length == 0)

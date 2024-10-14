@@ -8,17 +8,16 @@ namespace ObjectType
         
         public void OnObjectTypeChanged(Type type)
         {
+            var rend = GetComponent<SpriteRenderer>();
+            if (rend == null) return;
+            
             if (type.sprites.Length > spriteIndex)
             {
-                var rend = GetComponent<SpriteRenderer>();
-                if (rend != null)
-                {
-                    rend.sprite = type.sprites[spriteIndex];
-                }
+                rend.sprite = type.sprites[spriteIndex];
             }
             else
             {
-                Debug.LogError("Sprite index out of range");
+                rend.sprite = null;
             }
         }
         

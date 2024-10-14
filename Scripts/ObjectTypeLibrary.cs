@@ -8,14 +8,12 @@ namespace ObjectType
     {
         public ObjectTypeController[] prefabs;
         public Type[] objectTypes;
-        public string DefaultType => objectTypes != null && objectTypes.Length > 0 ? objectTypes[0].typeName : "NoType";
 
         public static ObjectTypeLibrary Find(string name = nameof(ObjectTypeLibrary))
         {
             var library = Resources.Load<ObjectTypeLibrary>(name);
 
 #if UNITY_EDITOR
-
             if (library == null)
             {
                 //Create the library

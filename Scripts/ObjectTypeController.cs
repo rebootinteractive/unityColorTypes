@@ -7,7 +7,7 @@ namespace ObjectType
     public class ObjectTypeController : MonoBehaviour
     {
         public bool pooling;
-        public ObjectTypeEnum type;
+        public ObjectTypeEnum defaultType;
         
         [SerializeField]private bool setInactiveListeners;
         [SerializeField]private bool useDefaultType;
@@ -53,7 +53,7 @@ namespace ObjectType
         {
             if (useDefaultType)
             {
-                SetObjectType(ObjectTypeLibrary.Find().FindObjectType(type.typeName));
+                SetObjectType(ObjectTypeLibrary.Find().FindObjectType(defaultType.typeName));
             }
         }
 

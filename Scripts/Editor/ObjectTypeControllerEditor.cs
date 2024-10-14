@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ObjectType
 {
-    [CustomEditor(typeof(ObjectTypeController),true)]
+    [CustomEditor(typeof(ObjectTypeController),true),CanEditMultipleObjects]
     public class ObjectTypeControllerEditor: Editor
     {
         public override void OnInspectorGUI()
@@ -14,7 +14,7 @@ namespace ObjectType
             
             if (GUILayout.Button("Update Type"))
             {
-                objectType.SetObjectType(ObjectTypeLibrary.Find().FindObjectType(objectType.type.typeName));
+                objectType.SetObjectType(ObjectTypeLibrary.Find().FindObjectType(objectType.defaultType.typeName));
                 EditorUtility.SetDirty(target);
                 
                 var listeners=objectType.GetComponentsInChildren<IObjectTypeListener>();
@@ -28,7 +28,7 @@ namespace ObjectType
             if (GUILayout.Button("Randomize Type"))
             {
                 Type randomType=ObjectTypeLibrary.Find().GetRandomType();
-                objectType.type = ObjectTypeEnum.GetEnum(randomType.typeName);
+                objectType.defaultType = ObjectTypeEnum.GetEnum(randomType.typeName);
                 objectType.SetObjectType(ObjectTypeLibrary.Find().GetRandomType());
                 EditorUtility.SetDirty(target);
                 
