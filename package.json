@@ -20,7 +20,8 @@
     "com.unity.modules.ui": "1.0.0",
     "com.unity.modules.uielements": "1.0.0",
     "com.unity.render-pipelines.core" : "12.1.8",
-    "com.unity.render-pipelines.universal": "14.0.9"
+    "com.unity.render-pipelines.universal": "14.0.9",
+    "com.reboot.core": "https://github.com/umurcg/gameTemplate.git"
   },
   "keywords": [
     "reboot"

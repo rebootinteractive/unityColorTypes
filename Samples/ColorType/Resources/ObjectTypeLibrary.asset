@@ -21,6 +21,7 @@ MonoBehaviour:
     - {r: 0, g: 0, b: 0, a: 1}
     textures: []
     sprites: []
+    prefabs: []
   - typeName: Blue
     materials:
     - {fileID: 2100000, guid: e9ed719eb1b2145f3b12977e038a51d9, type: 2}
@@ -28,6 +29,8 @@ MonoBehaviour:
     - {r: 0, g: 0, b: 1, a: 1}
     textures: []
     sprites: []
+    prefabs:
+    - {fileID: 8691907569765350505, guid: 9c9ab3671ee344188a9815f3bea7cef8, type: 3}
   - typeName: Cyan
     materials:
     - {fileID: 2100000, guid: 8c2375f84ea614cce801dcc85be8f14f, type: 2}
@@ -35,6 +38,7 @@ MonoBehaviour:
     - {r: 0, g: 0.97032166, b: 1, a: 1}
     textures: []
     sprites: []
+    prefabs: []
   - typeName: Gray
     materials:
     - {fileID: 2100000, guid: a7594d76d56b645598082208cfb0ed8b, type: 2}
@@ -42,6 +46,7 @@ MonoBehaviour:
     - {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}
     textures: []
     sprites: []
+    prefabs: []
   - typeName: Green
     materials:
     - {fileID: 2100000, guid: 643deb0cea3044dd88f1001c5827b109, type: 2}
@@ -49,6 +54,7 @@ MonoBehaviour:
     - {r: 0, g: 1, b: 0.03731489, a: 1}
     textures: []
     sprites: []
+    prefabs: []
   - typeName: Magenta
     materials:
     - {fileID: 2100000, guid: 395a88469a8524751b30ba03312b2ff6, type: 2}
@@ -56,6 +62,7 @@ MonoBehaviour:
     - {r: 1, g: 0, b: 0.95273113, a: 1}
     textures: []
     sprites: []
+    prefabs: []
   - typeName: Red
     materials:
     - {fileID: 2100000, guid: 03005e7637f1b489a97edd32e291c640, type: 2}
@@ -63,6 +70,7 @@ MonoBehaviour:
     - {r: 1, g: 0, b: 0, a: 1}
     textures: []
     sprites: []
+    prefabs: []
   - typeName: White
     materials:
     - {fileID: 2100000, guid: 73459939b3a7d4e78aafbfe66d4e7f0e, type: 2}
@@ -70,6 +78,7 @@ MonoBehaviour:
     - {r: 1, g: 1, b: 1, a: 1}
     textures: []
     sprites: []
+    prefabs: []
   - typeName: Yellow
     materials:
     - {fileID: 2100000, guid: 629c79192e89c43aebd07cec3da47074, type: 2}
@@ -77,3 +86,4 @@ MonoBehaviour:
     - {r: 1, g: 1, b: 0, a: 1}
     textures: []
     sprites: []
+    prefabs: []
