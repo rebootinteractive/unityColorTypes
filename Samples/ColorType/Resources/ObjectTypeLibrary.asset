@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2da81e1b7223542619e87454b09daa5f, type: 3}
   m_Name: ObjectTypeLibrary
   m_EditorClassIdentifier: 
+  isDefault: 0
   prefabs: []
   objectTypes:
   - typeName: Black

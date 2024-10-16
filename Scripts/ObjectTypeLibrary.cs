@@ -6,31 +6,43 @@ namespace ObjectType
     [CreateAssetMenu(fileName = nameof(ObjectTypeLibrary), menuName = "ObjectType/" + nameof(ObjectTypeLibrary))]
     public class ObjectTypeLibrary : ScriptableObject
     {
+        public bool isDefault;
         public ObjectTypeController[] prefabs;
         public Type[] objectTypes;
 
         public static ObjectTypeLibrary Find(string name = nameof(ObjectTypeLibrary))
         {
-            var library = Resources.Load<ObjectTypeLibrary>(name);
+            var allLibraries = Resources.LoadAll<ObjectTypeLibrary>("");
+            foreach (var library in allLibraries)
+            {
+                if(library.isDefault) return library;
+            }
 
+            if (allLibraries.Length > 0)
+            {
+                Debug.LogWarning("No default library found, returning the first one found");
+                return allLibraries[0];
+            }
+            
 #if UNITY_EDITOR
-            if (library == null)
+            if (allLibraries.Length == 0)
             {
                 //Create the library
-                library = CreateInstance<ObjectTypeLibrary>();
+                var library = CreateInstance<ObjectTypeLibrary>();
                 library.objectTypes = Array.Empty<Type>();
+                library.isDefault = true;
 
                 //Save the library
-                var path = "Assets/Resources/" + nameof(ObjectTypeLibrary) + ".asset";
+                var path = "Assets/Resources/" + name + ".asset";
                 UnityEditor.AssetDatabase.CreateAsset(library, path);
 
                 //Refresh the database
                 UnityEditor.AssetDatabase.Refresh();
+                return library;
             }
-
 #endif
 
-            return library;
+            return null;
         }
 
         public Type FindObjectType(string typeName)
