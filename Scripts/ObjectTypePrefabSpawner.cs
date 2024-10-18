@@ -10,7 +10,7 @@ namespace ObjectType
         public void OnObjectTypeChanged(Type type)
         {
             DestroySpawnedInstance();
-            if (type.prefabs.Length > prefabIndex)
+            if (type.prefabs.Length > prefabIndex && type.prefabs[prefabIndex]!=null)
             {
                 if (Application.isPlaying)
                 {
