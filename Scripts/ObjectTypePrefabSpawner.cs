@@ -15,12 +15,14 @@ namespace ObjectType
                 if (Application.isPlaying)
                 {
                     spawnedInstance = Instantiate(type.prefabs[prefabIndex], transform);
+                    spawnedInstance.transform.localPosition = Vector3.zero;
                 }
                 else
                 {
                     #if UNITY_EDITOR
                     spawnedInstance = (UnityEditor.PrefabUtility.InstantiatePrefab(type.prefabs[prefabIndex].gameObject) as GameObject);
                     spawnedInstance.transform.SetParent(transform);
+                    spawnedInstance.transform.localPosition = Vector3.zero;
                     UnityEditor.EditorUtility.SetDirty(gameObject);
                     #endif
                 }
