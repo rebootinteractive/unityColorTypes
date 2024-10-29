@@ -90,6 +90,13 @@ namespace ObjectType
             if (!Application.isPlaying)
             {
                 instance = (UnityEditor.PrefabUtility.InstantiatePrefab(prefab.gameObject) as GameObject)?.GetComponent<ObjectTypeController>();
+                if (instance == null)
+                {
+                    Debug.LogError("Prefab does not have ObjectTypeController component");
+                    return null;
+                }
+                
+                instance.defaultType = ObjectTypeEnum.GetEnum(typeName);
             }
             
 #endif
