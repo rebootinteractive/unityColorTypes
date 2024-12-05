@@ -5,8 +5,8 @@ namespace ObjectType
 {
     public class ObjectTypeMaterialLerpSetter : MonoBehaviour, IObjectTypeListener
     {
-        [SerializeField]protected float lerpDuration = 3;
-        [SerializeField]protected bool lerpEnabled;
+        public float lerpDuration = 3;
+        public bool lerpEnabled;
 
         public int objectTypeMaterialIndex;
         public int rendererMaterialIndex;
