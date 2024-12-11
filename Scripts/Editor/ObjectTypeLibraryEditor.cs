@@ -5,6 +5,9 @@ namespace ObjectType
     [UnityEditor.CustomEditor(typeof(ObjectTypeLibrary))]
     public class ObjectTypeLibraryEditor: UnityEditor.Editor
     {
+
+        private string _materialReaderPath;
+        private int _materialReaderIndex;
         
         public override void OnInspectorGUI()
         {
@@ -26,6 +29,13 @@ namespace ObjectType
                         UnityEditor.EditorUtility.SetDirty(objectTypeLibrary);
                     }
                 }
+            }
+            
+            _materialReaderPath = UnityEditor.EditorGUILayout.TextField("Material Reader Path", _materialReaderPath);
+            _materialReaderIndex = UnityEditor.EditorGUILayout.IntField("Material Index", _materialReaderIndex);
+            if (GUILayout.Button("Read Materials"))
+            {
+                library.ReadMaterialFromAssets(_materialReaderPath, _materialReaderIndex);
             }
         }
     }
