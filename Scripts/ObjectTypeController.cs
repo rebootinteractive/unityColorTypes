@@ -81,8 +81,15 @@ namespace ObjectType
             }
 
             var prefabs = ObjectTypeLibrary.Find().prefabs;
-            if (prefabIndex < 0 || prefabIndex >= prefabs.Length) return null;
-            var prefab = prefabs[prefabIndex];
+            if (prefabIndex < 0 || prefabIndex >= prefabs.Length)
+            {
+                return null;
+            }
+            return Spawn(objectType, prefabs[prefabIndex]);
+        }
+
+        public static ObjectTypeController Spawn(Type objectType, ObjectTypeController prefab)
+        {
             ObjectTypeController instance = null;
 
 #if UNITY_EDITOR
@@ -95,17 +102,17 @@ namespace ObjectType
                     Debug.LogError("Prefab does not have ObjectTypeController component");
                     return null;
                 }
-                
-                instance.defaultType = ObjectTypeEnum.GetEnum(typeName);
+
+                instance.defaultType = ObjectTypeEnum.GetEnum(objectType.typeName);
             }
-            
+
 #endif
             if (instance == null)
             {
                 if (prefab.pooling)
                 {
                     instance = LeanPool.Spawn(prefab.gameObject).GetComponent<ObjectTypeController>();
-                    instance.Pooled=true;
+                    instance.Pooled = true;
                 }
                 else
                 {
