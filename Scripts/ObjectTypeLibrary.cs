@@ -7,22 +7,30 @@ namespace ObjectType
     [CreateAssetMenu(fileName = nameof(ObjectTypeLibrary), menuName = "ObjectType/" + nameof(ObjectTypeLibrary))]
     public class ObjectTypeLibrary : ScriptableObject
     {
+        private static ObjectTypeLibrary _cachedInstance;
         public bool isDefault;
         public ObjectTypeController[] prefabs;
         public Type[] objectTypes;
 
         public static ObjectTypeLibrary Find(string name = nameof(ObjectTypeLibrary))
         {
+            if (_cachedInstance != null) return _cachedInstance;
+
             var allLibraries = Resources.LoadAll<ObjectTypeLibrary>("");
             foreach (var library in allLibraries)
             {
-                if(library.isDefault) return library;
+                if(library.isDefault)
+                {
+                    _cachedInstance = library;
+                    return _cachedInstance;
+                }
             }
 
             if (allLibraries.Length > 0)
             {
                 Debug.LogWarning("No default library found, returning the first one found");
-                return allLibraries[0];
+                _cachedInstance = allLibraries[0];
+                return _cachedInstance;
             }
             
 #if UNITY_EDITOR
@@ -39,12 +47,35 @@ namespace ObjectType
 
                 //Refresh the database
                 UnityEditor.AssetDatabase.Refresh();
-                return library;
+                _cachedInstance = library;
+                return _cachedInstance;
             }
 #endif
 
             return null;
         }
+
+#if ODIN_INSPECTOR
+        [Button]
+#endif
+        public void ClearLibraryCache()
+        {
+            _cachedInstance = null;
+        }
+
+        // Call this when you need to force a reload of the library
+        public static void ClearCache()
+        {
+            _cachedInstance = null;
+        }
+
+#if UNITY_EDITOR
+        private void OnValidate()
+        {
+            // Clear cache in editor when the asset is modified
+            _cachedInstance = null;
+        }
+#endif
 
         public Type FindObjectType(string typeName)
         {
