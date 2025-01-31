@@ -69,7 +69,7 @@ namespace ObjectType
             }
         }
 
-        protected IEnumerator LerpMaterial(Material aimMaterial)
+        protected virtual IEnumerator LerpMaterial(Material aimMaterial)
         {
             if (Renderer.materials.Length > rendererMaterialIndex)
             {
