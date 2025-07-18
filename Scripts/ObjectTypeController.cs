@@ -33,6 +33,23 @@ namespace ObjectType
         }
         public bool Pooled { get; private set; }
 
+        public virtual void SetObjectType(int typeIndex)
+        {
+            var library = ObjectTypeLibrary.Find();
+            if (library==null)
+            {
+                Debug.LogError("ObjectTypeLibrary is null");
+                return;
+            }
+            var objectTypes=library.objectTypes;
+            if (typeIndex < 0 || typeIndex >= objectTypes.Length)
+            {
+                Debug.LogError("Type index is out of range");
+                return;
+            }
+            SetObjectType(objectTypes[typeIndex]);
+        }
+
         public virtual void SetObjectType(Type type)
         {
             if (type.IsNull())

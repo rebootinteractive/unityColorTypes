@@ -2,7 +2,10 @@
     "name": "Reboot.ObjectType.Editor",
     "rootNamespace": "",
     "references": [
-        "GUID:d6401a0991ae6464eb18c54d2e2263e4"
+        "GUID:d6401a0991ae6464eb18c54d2e2263e4",
+        "GUID:637dfb2b87b2cf0499a8da5b0b91da54",
+        "GUID:82c7e6eac44d7e048b22ad98800dcfc7",
+        "GUID:174bc9f391f1b7f4292b3824c5019a21"
     ],
     "includePlatforms": [
         "Editor"
