@@ -72,6 +72,28 @@ namespace ObjectType
             _cachedInstance = null;
         }
 
+        public int GetIndexOfType(string typeName){
+            for (int i = 0; i < objectTypes.Length; i++)
+            {
+                if (objectTypes[i].typeName == typeName)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        public int GetIndexOfType(Type type){
+            for (int i = 0; i < objectTypes.Length; i++)
+            {
+                if (objectTypes[i].typeName == type.typeName)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
 #if UNITY_EDITOR
         private void OnValidate()
         {
