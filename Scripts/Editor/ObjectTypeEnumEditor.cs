@@ -34,10 +34,12 @@ namespace ObjectType
             if (currentIndex == -1) currentIndex = 0; // Default to first item if not found
 
             // Draw the dropdown
-            currentIndex = EditorGUI.Popup(position, label.text, currentIndex, typeNames);
-            typeNameProp.stringValue = typeNames[currentIndex];
-            EditorUtility.SetDirty(property.serializedObject.targetObject);
-            
+            int index = EditorGUI.Popup(position, label.text, currentIndex, typeNames);
+            if (index != currentIndex)
+            {
+                typeNameProp.stringValue = typeNames[index];
+                EditorUtility.SetDirty(property.serializedObject.targetObject);
+            }        
             
             EditorGUI.EndProperty();
         }
