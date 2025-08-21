@@ -6,7 +6,7 @@ namespace ObjectType
     [Serializable]
     public class ObjectTypeEnum
     {
-        public string typeName = "NoType";
+        public string typeName;
 
         public static ObjectTypeEnum GetEnum(string type)
         {

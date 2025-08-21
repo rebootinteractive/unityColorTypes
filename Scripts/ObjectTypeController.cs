@@ -70,7 +70,15 @@ namespace ObjectType
         {
             if (useDefaultType)
             {
-                SetObjectType(ObjectTypeLibrary.Find().FindObjectType(defaultType.typeName));
+                var library = ObjectTypeLibrary.Find();
+                var typeNames = library.GetObjectTypeNames();
+                var name = string.IsNullOrEmpty(defaultType?.typeName) && typeNames.Length > 0
+                    ? typeNames[0]
+                    : defaultType?.typeName;
+                if (!string.IsNullOrEmpty(name))
+                {
+                    SetObjectType(library.FindObjectType(name));
+                }
             }
         }
 

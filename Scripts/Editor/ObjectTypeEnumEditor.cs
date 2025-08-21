@@ -31,7 +31,13 @@ namespace ObjectType
             // Get the current type name and find its index in the list
             string currentTypeName = typeNameProp.stringValue;
             int currentIndex = Array.IndexOf(typeNames, currentTypeName);
-            if (currentIndex == -1) currentIndex = 0; // Default to first item if not found
+            // Coerce empty or unknown values to a valid default
+            if (string.IsNullOrEmpty(currentTypeName) || currentIndex == -1)
+            {
+                typeNameProp.stringValue = typeNames[0];
+                EditorUtility.SetDirty(property.serializedObject.targetObject);
+                currentIndex = 0;
+            }
 
             // Draw the dropdown
             int index = EditorGUI.Popup(position, label.text, currentIndex, typeNames);
