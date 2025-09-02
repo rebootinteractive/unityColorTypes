@@ -14,6 +14,8 @@ namespace ObjectType
         public bool isDefault;
         public ObjectTypeController[] prefabs;
         public Type[] objectTypes;
+        // Special type used when an object is hidden. Not part of objectTypes list.
+        public Type hiddenType;
 
         public static ObjectTypeLibrary Find(string name = nameof(ObjectTypeLibrary))
         {

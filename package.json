@@ -1,6 +1,6 @@
 {
   "name": "com.reboot.objecttype",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "displayName": "ObjectType",
   "description": "Helper package used for defining object types in a game with visual helper setter system.",
   "unity": "2021.3",

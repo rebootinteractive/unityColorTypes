@@ -88,3 +88,12 @@ MonoBehaviour:
     textures: []
     sprites: []
     prefabs: []
+  hiddenType:
+    typeName: Hidden
+    materials:
+    - {fileID: 10756, guid: 0000000000000000e000000000000000, type: 0}
+    colors:
+    - {r: 0, g: 0, b: 0, a: 0}
+    textures: []
+    sprites: []
+    prefabs: []

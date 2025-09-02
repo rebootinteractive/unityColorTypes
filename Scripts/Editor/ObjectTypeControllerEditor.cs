@@ -39,6 +39,27 @@ namespace ObjectType
                     EditorUtility.SetDirty(listenerObject);
                 }       
             }
+
+            EditorGUILayout.Space();
+            EditorGUILayout.LabelField("Hidden Controls", EditorStyles.boldLabel);
+            using (new EditorGUILayout.HorizontalScope())
+            {
+                if (GUILayout.Button("Hide"))
+                {
+                    objectType.Hide();
+                    EditorUtility.SetDirty(target);
+                }
+                if (GUILayout.Button("Reveal"))
+                {
+                    objectType.Reveal();
+                    EditorUtility.SetDirty(target);
+                }
+                if (GUILayout.Button("Toggle Hidden"))
+                {
+                    objectType.ToggleHidden();
+                    EditorUtility.SetDirty(target);
+                }
+            }
         }
     }
 }

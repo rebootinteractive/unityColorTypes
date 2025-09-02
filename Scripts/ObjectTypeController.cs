@@ -11,6 +11,7 @@ namespace ObjectType
         
         [SerializeField]private bool setInactiveListeners;
         [SerializeField]private bool useDefaultType;
+        [SerializeField]private bool hidden; // Controls whether listeners should use hiddenType
 
         public string TypeName
         {
@@ -30,6 +31,20 @@ namespace ObjectType
             get;
             private set;
 
+        }
+        public bool IsHidden => hidden;
+        public Type EffectiveType
+        {
+            get
+            {
+                if (hidden)
+                {
+                    var library = ObjectTypeLibrary.Find();
+                    return library != null ? library.hiddenType : new Type();
+                }
+
+                return Type;
+            }
         }
         public bool Pooled { get; private set; }
 
@@ -62,7 +77,7 @@ namespace ObjectType
             var listeners = GetComponentsInChildren<IObjectTypeListener>(setInactiveListeners);
             foreach (var listener in listeners)
             {
-                listener.OnObjectTypeChanged(type);
+                listener.OnObjectTypeChanged(EffectiveType);
             }
         }
 
@@ -80,6 +95,8 @@ namespace ObjectType
                     SetObjectType(library.FindObjectType(name));
                 }
             }
+
+            // No renderer disabling; listeners will receive hiddenType when hidden
         }
 
         public virtual void Destroy()
@@ -96,6 +113,26 @@ namespace ObjectType
                     DestroyImmediate(gameObject);
             }
         }
+
+        public void SetHidden(bool value)
+        {
+            if (hidden == value) return;
+            hidden = value;
+
+            if (!Type.IsNull())
+            {
+                var listeners = GetComponentsInChildren<IObjectTypeListener>(setInactiveListeners);
+                foreach (var listener in listeners)
+                {
+                    listener.OnObjectTypeChanged(EffectiveType);
+                }
+            }
+        }
+
+        public void Hide() => SetHidden(true);
+        public void Reveal() => SetHidden(false);
+        public void ToggleHidden() => SetHidden(!hidden);
+
         
         public static ObjectTypeController Spawn(string typeName, int prefabIndex)
         {
