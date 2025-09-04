@@ -8,8 +8,11 @@ namespace ObjectType
         public int objectTypeMaterialIndex;
         public int rendererMaterialIndex;
 
+        [SerializeField] private Type ObjectType;
+
         public void OnObjectTypeChanged(Type type)
         {
+            ObjectType = type;
             if (type.materials.Length > objectTypeMaterialIndex)
             {
                 var rend = GetComponent<Renderer>();
@@ -26,7 +29,7 @@ namespace ObjectType
                             rend.sharedMaterials = newMaterials;
                             return;
                         }
-                      
+
                         Debug.LogError("Renderer shared material index out of range");
                         return;
                     }
@@ -49,5 +52,25 @@ namespace ObjectType
                 Debug.LogError("Material index out of range");
             }
         }
+
+
+        public void UpdateMaterialIndex(int index)
+        {
+            objectTypeMaterialIndex = index;
+            if (ObjectType.IsNull() == false)
+            {
+                OnObjectTypeChanged(ObjectType);
+            }
+        }
+
+        public void UpdateRendererMaterialIndex(int index)
+        {
+            rendererMaterialIndex = index;
+            if (ObjectType.IsNull() == false)
+            {
+                OnObjectTypeChanged(ObjectType);
+            }
+        }
+
     }
 }
