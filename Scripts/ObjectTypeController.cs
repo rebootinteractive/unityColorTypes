@@ -48,6 +48,11 @@ namespace ObjectType
         }
         public bool Pooled { get; private set; }
 
+        public virtual void SetObjectType(ObjectTypeEnum type)
+        {
+            SetObjectType(ObjectTypeLibrary.Find().FindObjectType(type.typeName));
+        }
+
         public virtual void SetObjectType(int typeIndex)
         {
             var library = ObjectTypeLibrary.Find();
