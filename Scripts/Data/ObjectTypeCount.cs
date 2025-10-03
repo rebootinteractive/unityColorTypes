@@ -1,7 +1,7 @@
 namespace ObjectType
 {
     [System.Serializable]
-    public class ObjectTypeCount
+    public struct ObjectTypeCount
     {
         public ObjectTypeEnum ObjectType { get; set; }
         public int Count { get; set; }
