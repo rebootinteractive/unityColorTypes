@@ -1,5 +1,6 @@
 namespace ObjectType
 {
+    [System.Serializable]
     public class ObjectTypeCount
     {
         public ObjectTypeEnum ObjectType { get; set; }
