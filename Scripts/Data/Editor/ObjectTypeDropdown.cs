@@ -9,7 +9,7 @@ namespace ObjectType
     // - Popup shows type names; value is the selected index
     // - Background tinted with the selected type's color (first color slot)
     // - Previous/Next buttons to navigate types quickly
-    public static class ObjectTypeCountDropdown
+    public static class ObjectTypeDropdown
     {
         // Layout version
         public static int DrawLayout(int currentIndex, string label = null, int colorIndex = 0)

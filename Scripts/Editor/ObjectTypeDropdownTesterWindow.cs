@@ -27,7 +27,7 @@ namespace ObjectType
 
             EditorGUILayout.Space();
             _colorIndex = EditorGUILayout.IntSlider("Color Index", _colorIndex, 0, 8);
-            _selectedIndex = ObjectTypeCountDropdown.DrawLayout(_selectedIndex, "Object Type", _colorIndex);
+            _selectedIndex = ObjectTypeDropdown.DrawLayout(_selectedIndex, "Object Type", _colorIndex);
 
             EditorGUILayout.Space();
             if (library.objectTypes != null && library.objectTypes.Length > 0 && _selectedIndex >= 0 && _selectedIndex < library.objectTypes.Length)
