@@ -8,10 +8,12 @@ namespace ObjectType
     {
         public bool pooling;
         public ObjectTypeEnum defaultType;
-        
-        [SerializeField]private bool setInactiveListeners;
-        [SerializeField]private bool useDefaultType;
-        [SerializeField]private bool hidden; // Controls whether listeners should use hiddenType
+
+        [SerializeField] private bool setInactiveListeners;
+        [SerializeField] private bool useDefaultType;
+        [SerializeField] private bool hidden; // Controls whether listeners should use hiddenType
+        [SerializeField] private bool specifyListeners;
+        [SerializeField] private IObjectTypeListener[] listeners;
 
         public string TypeName
         {
@@ -25,7 +27,7 @@ namespace ObjectType
                 return Type.typeName;
             }
         }
-        
+
         public Type Type
         {
             get;
@@ -48,6 +50,18 @@ namespace ObjectType
         }
         public bool Pooled { get; private set; }
 
+        public IObjectTypeListener[] GetListeners()
+        {
+            if (specifyListeners)
+            {
+                return listeners;
+            }
+            else
+            {
+                return GetComponentsInChildren<IObjectTypeListener>(setInactiveListeners);
+            }
+        }
+
         public virtual void SetObjectType(ObjectTypeEnum type)
         {
             SetObjectType(ObjectTypeLibrary.Find().FindObjectType(type.typeName));
@@ -56,12 +70,12 @@ namespace ObjectType
         public virtual void SetObjectType(int typeIndex)
         {
             var library = ObjectTypeLibrary.Find();
-            if (library==null)
+            if (library == null)
             {
                 Debug.LogError("ObjectTypeLibrary is null");
                 return;
             }
-            var objectTypes=library.objectTypes;
+            var objectTypes = library.objectTypes;
             if (typeIndex < 0 || typeIndex >= objectTypes.Length)
             {
                 Debug.LogError("Type index is out of range");
@@ -79,7 +93,7 @@ namespace ObjectType
             }
 
             Type = type;
-            var listeners = GetComponentsInChildren<IObjectTypeListener>(setInactiveListeners);
+            var listeners = GetListeners();
             foreach (var listener in listeners)
             {
                 listener.OnObjectTypeChanged(EffectiveType);
@@ -112,7 +126,7 @@ namespace ObjectType
             }
             else
             {
-                if(Application.isPlaying)
+                if (Application.isPlaying)
                     Destroy(gameObject);
                 else
                     DestroyImmediate(gameObject);
@@ -126,7 +140,7 @@ namespace ObjectType
 
             if (!Type.IsNull())
             {
-                var listeners = GetComponentsInChildren<IObjectTypeListener>(setInactiveListeners);
+                var listeners = GetListeners();
                 foreach (var listener in listeners)
                 {
                     listener.OnObjectTypeChanged(EffectiveType);
@@ -138,7 +152,7 @@ namespace ObjectType
         public void Reveal() => SetHidden(false);
         public void ToggleHidden() => SetHidden(!hidden);
 
-        
+
         public static ObjectTypeController Spawn(string typeName, int prefabIndex)
         {
             var objectType = ObjectTypeLibrary.Find().FindObjectType(typeName);
