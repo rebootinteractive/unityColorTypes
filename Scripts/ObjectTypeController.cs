@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Lean.Pool;
 using UnityEngine;
 
@@ -13,7 +14,7 @@ namespace ObjectType
         [SerializeField] private bool useDefaultType;
         [SerializeField] private bool hidden; // Controls whether listeners should use hiddenType
         [SerializeField] private bool specifyListeners;
-        [SerializeField] private IObjectTypeListener[] listeners;
+        [SerializeField] private GameObject[] listeners;
 
         public string TypeName
         {
@@ -54,7 +55,7 @@ namespace ObjectType
         {
             if (specifyListeners)
             {
-                return listeners;
+                return listeners.Select(l => l.GetComponent<IObjectTypeListener>()).ToArray();
             }
             else
             {
